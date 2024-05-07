@@ -5,19 +5,25 @@
     <title>Student Form</title>
 </head>
 <body>
-<form action="{{ url_for('result') }}" method="post">
-    <label>Name: <input type="text" name="name"></label><br>
-    <label>Student Number: <input type="text" name="student_number"></label><br>
-    <label>Gender:</label>
-    <input type="radio" name="gender" value="Male"> Male
-    <input type="radio" name="gender" value="Female"> Female<br>
-    <label>Major: <input type="text" name="major"></label><br>
-    <label>Programming Languages:</label><br>
-    <input type="checkbox" name="languages" value="Python"> Python<br>
-    <input type="checkbox" name="languages" value="Java"> Java<br>
-    <input type="checkbox" name="languages" value="HTML"> HTML<br>
-    <input type="checkbox" name="languages" value="C++"> C++<br>
-    <button type="submit">Submit</button>
-</form>
+<form action="{{ url_for('submit') }}" method="post">
+	Name
+	<input type="text" name="name">
+<br><br>
+	Student Number
+	<input type="text" name="student_number">
+<p>Gender</p>
+	<input type="radio" name="gender" value="Male" checked> Male
+	<input type="radio" name="gender" value="Female"> Female
+<br><br>
+	Major
+	<input type="text" name="major">
+    <p>Programming Languages</p>
+	<input type="checkbox" name="languages" value="Python" checked> Python
+	<input type="checkbox" name="languages" value="Java"> Java
+	<input type="checkbox" name="languages" value="HTML"> HTML
+	<input type="checkbox" name="languages" value="C++"> C++
+<br><br>
+	<input type="submit" value="submit">
+</form> 
 </body>
 </html>
