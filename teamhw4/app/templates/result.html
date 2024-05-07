@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+<table>
+    <tr><td>Name</td><td>{{ name }}</td></tr>
+    <tr><td>Student Number</td><td>{{ student_number }}</td></tr>
+    <tr><td>Gender</td><td>{{ gender }}</td></tr>
+    <tr><td>Major</td><td>{{ major }}</td></tr>
+    <tr><td>Languages</td>
+        <td>{{ languages|join(', ') }}</td></tr>
+</table>
+</body>
+</html>
