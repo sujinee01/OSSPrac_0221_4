@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Result</title>
-</head>
-<body>
-<table>
-    <tr><td>Name</td><td>{{ name }}</td></tr>
-    <tr><td>Student Number</td><td>{{ student_number }}</td></tr>
-    <tr><td>Gender</td><td>{{ gender }}</td></tr>
-    <tr><td>Major</td><td>{{ major }}</td></tr>
-    <tr><td>Languages</td>
-        <td>{{ languages|join(', ') }}</td></tr>
-</table>
-</body>
+    <style>
+      body {
+        font-family: Arial, sans-serif; /* Sets a more modern default font */
+      }
+      table {
+        width: 50%; /* Adjust as needed */
+        margin-left: auto;
+        margin-right: auto; /* Centers the table on the page */
+        border-collapse: collapse; /* Ensures borders between cells are merged */
+        table-layout: fixed; /* Helps keep columns evenly spaced */
+      }
+      td,
+      th {
+        border: 1px solid #000; /* Solid black border around cells */
+        padding: 10px; /* More padding for content within cells */
+        text-align: left; /* Aligns text to the left within cells */
+      }
+      th {
+        background-color: #f2f2f2; /* Light grey background for headers */
+        text-transform: capitalize; /* Makes headers appear more formal */
+      }
+      td {
+        background-color: #ffffff; /* Ensures cell backgrounds are white */
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>{{ name }}</td>
+      </tr>
+      <tr>
+        <td>Student Number</td>
+        <td>{{ student_number }}</td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>{{ gender }}</td>
+      </tr>
+      <tr>
+        <td>Major</td>
+        <td>{{ major }}</td>
+      </tr>
+      <tr>
+        <td>Programming Languages</td>
+        <td>{{ languages|join(', ') }}</td>
+      </tr>
+    </table>
+  </body>
 </html>

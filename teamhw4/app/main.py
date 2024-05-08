@@ -11,7 +11,7 @@ def submit():
     if request.method == 'POST':
         name = request.form['name']
         student_number = request.form['student_number']
-        gender = request.form['gender']
+        gender = request.form.get('gender', 'Not specified')  # Default to 'Not specified' if not provided
         major = request.form['major']
         languages = request.form.getlist('languages')
         return render_template('result.html', name=name, student_number=student_number,
