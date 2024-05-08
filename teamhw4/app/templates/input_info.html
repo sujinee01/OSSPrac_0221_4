@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Student Form</title>
-</head>
-<body>
-<form action="{{ url_for('submit') }}" method="post">
-    <label>Name: <input type="text" name="name"></label><br>
-    <label>Student Number: <input type="text" name="student_number"></label><br>
-    <label>Gender:</label>
-    <input type="radio" name="gender" value="Male"> Male
-    <input type="radio" name="gender" value="Female"> Female<br>
-    <label>Major: <input type="text" name="major"></label><br>
-    <label>Programming Languages:</label><br>
-    <input type="checkbox" name="languages" value="Python"> Python<br>
-    <input type="checkbox" name="languages" value="Java"> Java<br>
-    <input type="checkbox" name="languages" value="HTML"> HTML<br>
-    <input type="checkbox" name="languages" value="C++"> C++<br>
-    <button type="submit">Submit</button>
-</form>
-</body>
+  </head>
+  <body>
+    <form action="{{ url_for('submit') }}" method="post">
+      <label>Name <input type="text" name="name" /></label><br /><br />
+      <label>Student Number: <input type="text" name="student_number" /></label
+      ><br /><br />
+      <label>Gender</label><br />
+      <input type="radio" name="gender" value="Male" /> Male
+      <input type="radio" name="gender" value="Female" /> Female<br /><br />
+      <label>Major <input type="text" name="major" /></label><br /><br />
+      <label>Programming Languages</label><br /><br />
+      <input type="checkbox" name="languages" value="Python" /> Python
+      <input type="checkbox" name="languages" value="Java" /> Java
+      <input type="checkbox" name="languages" value="HTML" /> HTML
+      <input type="checkbox" name="languages" value="C++" /> C++<br /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
 </html>
