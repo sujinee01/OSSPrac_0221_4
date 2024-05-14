@@ -3,43 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>Result</title>
-    <style>
-      td,
-      input,
-      label {
-        padding: 5px;
-        margin: 3px;
-      }
-      table {
-        border-collapse: collapse;
-      }
-      td {
-        border: 3px double black;
-      }
-    </style>
   </head>
   <body>
-    <table>
+    <table border = "1">
+      {% for key, value in result.items()%}
       <tr>
-        <td>Name</td>
-        <td>{{ name }}</td>
+        <th> {{ key }} </th> <!-- key부분(인덱싱)을 표 왼쪽에 출력-->
+        <td> {{ value }} </td> <!-- value부분(값)을 표 오른쪽에 출력-->
       </tr>
-      <tr>
-        <td>Student Number</td>
-        <td>{{ student_number }}</td>
-      </tr>
-      <tr>
-        <td>Gender</td>
-        <td>{{ gender }}</td>
-      </tr>
-      <tr>
-        <td>Major</td>
-        <td>{{ major }}</td>
-      </tr>
-      <tr>
-        <td>Programming Languages</td>
-        <td>{{ languages|join(', ') }}</td>
-      </tr>
+      {% endfor %}
     </table>
   </body>
 </html>
