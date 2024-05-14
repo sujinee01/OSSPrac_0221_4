@@ -1,23 +1,24 @@
-from flask import Flask, render_template, request
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Form</title>
+  </head>
+  <body>
+    <form action="/result" method="POST">
+      <p>Name <input type="text" name="name" /></p>
+      <p>Student Number <input type="text" name="student_number" /></p>
+      <p>Gender</p>
+      <input type="radio" name="gender" value="Male" /> Male
+      <input type="radio" name="gender" value="Female" /> Female
+      <p>Major <input type="text" name="major" /></p>
+      <p>Programming Languages</p>
+      <input type="checkbox" name="languages[]" value="Python" /> Python
+      <input type="checkbox" name="languages[]" value="Java" /> Java
+      <input type="checkbox" name="languages[]" value="HTML" /> HTML
+      <input type="checkbox" name="languages[]" value="C++" /> C++<br /><br />
+      <button type="submit" name = 'submit' value = 'submit'>submit</button>
+    </form>
+  </body>
+</html>
 
-app = Flask(__name__)
-
-@app.route('/')
-def input():
-    return render_template('input_info.html')
-
-@app.route('/result', methods=['POST','GET'])
-def result():
-    if request.method == 'POST':
-        result = dict()
-        result['Name'] = request.form.get('name')
-        result['Student Number'] = request.form.get('student_number')
-        result['Gender'] = request.form.get('gender', 'Not specified')  # Default to 'Not specified' if not provided
-        result['Major'] = request.form.get('major')
-        selected_languages = request.form.getlist('languages[]')
-        languages_str = ', '.join(selected_languages)
-        result['Languages'] = languages_str
-        return render_template('result.html', result=result)
-
-if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0',port=5000)
