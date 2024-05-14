@@ -1,21 +1,23 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+def input():
     return render_template('input_info.html')
 
-@app.route('/submit', methods=['POST'])
-def submit():
+@app.route('/result', methods=['POST','GET'])
+def result():
     if request.method == 'POST':
-        name = request.form['name']
-        student_number = request.form['student_number']
-        gender = request.form.get('gender', 'Not specified')  # Default to 'Not specified' if not provided
-        major = request.form['major']
-        languages = request.form.getlist('languages')
-        return render_template('result.html', name=name, student_number=student_number,
-                               gender=gender, major=major, languages=languages)
+        result = dict()
+        result['Name'] = request.form.get('name')
+        result['Student Number'] = request.form.get('student_number')
+        result['Gender'] = request.form.get('gender', 'Not specified')  # Default to 'Not specified' if not provided
+        result['Major'] = request.form.get('major')
+        selected_languages = request.form.getlist('languages[]')
+        languages_str = ', '.join(selected_languages)
+        result['Languages'] = languages_str
+        return render_template('result.html', result=result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=5000)
