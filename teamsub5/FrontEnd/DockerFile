@@ -10,5 +10,8 @@ WORKDIR /usr/src/app
 # 현재 local 경로에 있는 디렉토리(prac5)를 컨테이너 내부로 copy함
 COPY . .
 
+# 필요한 패키지 설치
+RUN pip install flask
+
 # python ./main.py가 실행됨. 이때, main.py는 본인의 python 파일 이름으로 변경 가능
 CMD [ "python3", "main.py" ]
