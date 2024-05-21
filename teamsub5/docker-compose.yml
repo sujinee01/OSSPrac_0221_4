@@ -7,13 +7,13 @@ services: # 아래는 서비스 정의
       # 서비스 빌드를 위한 정의 내용
       build: 
          context: ./FrontEnd
-      image: frontapp_image
+      image: eric789/frontapp:latest
       ports: 
          - "8080:8080"
 
    backapp:                   # service2의 명칭  
       # 서비스 빌드를 위한 정의 내용
       build: ./BackEnd
-      image: backapp_image
+      image: eric789/backapp:latest
       ports:
          - "8081:8080"

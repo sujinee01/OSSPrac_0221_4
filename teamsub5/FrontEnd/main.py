@@ -12,17 +12,17 @@ def result():
         result = dict()
         result['Name'] = request.form.get('name')
         result['Student Number'] = request.form.get('student_number')
-        result['University'] = request.form.get('University')
+        result['University'] = request.form.get('university')
         result['Major'] = request.form.get('major')
         result['Gender'] = request.form.get('gender', 'Not specified')  # Default to 'Not specified' if not provided
         email_prefix = request.form.get('Email')
         email_domain = request.form.get('email_domain')
-        result['Email'] = f"{email_prefix}@{email_domain}"
-        selected_languages = request.form.getlist('languages[]')
+        result['Email'] = '@'.join([email_prefix,email_domain])
+        selected_languages = request.form.getlist('PL[]')
         languages_str = ', '.join(selected_languages)
         result['Languages'] = languages_str
         return render_template('result.html', result=result)
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0',port=5000)
+    app.run(debug=True,host='0.0.0.0',port=8080)
     
