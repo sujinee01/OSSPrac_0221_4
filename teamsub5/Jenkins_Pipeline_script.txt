@@ -1,0 +1,43 @@
+pipeline {
+   agent any
+   triggers {
+       pollSCM('*/3 * * * *')
+   }
+   environment {
+       DOCKER_CREDENTIALS = credentials('dockerhub')
+       DOCKER_USR = "${DOCKER_CREDENTIALS_USR}"
+   }
+   stages {
+       stage('Prepare') {
+           steps {
+               git url: 'https://github.com/CSID-DGU/2024-1-OSSPRAC-0221-4.git',
+                   branch: 'main',
+                   credentialsId: 'github'
+           }
+       }
+       stage('Build') {
+           steps {
+               dir('teamsub5') {
+                   sh 'docker compose build'
+               }
+           }
+       }
+       stage('Tag') {
+           steps {
+               script {
+                   sh "docker tag ${DOCKER_USR}/frontapp:latest ${DOCKER_USR}/frontapp:${BUILD_NUMBER}"
+                   sh "docker tag ${DOCKER_USR}/backapp:latest ${DOCKER_USR}/backapp:${BUILD_NUMBER}"
+               }
+           }
+       }
+       stage('Push') {
+           steps {
+               script {
+                   sh "echo ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin"
+                   sh "docker push ${DOCKER_USR}/frontapp:${BUILD_NUMBER}"
+                   sh "docker push ${DOCKER_USR}/backapp:${BUILD_NUMBER}"
+               }
+           }
+       }
+   }
+}
